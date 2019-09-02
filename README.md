@@ -34,28 +34,28 @@ Baixa arquivo de `files/api_uploaded_files` recebendo um json como corpo com os 
 A vunerabilidade pode ser explorada mandando no lugar do nome do arquivo nas duas apis um caminho alternativo
 
 #### Download:
-![](images/Screen Shot 2019-09-02 at 16.14.19.png)
+![](https://github.com/gabriel-lfs/path-transversal/blob/master/images/2.png)
 
 #### Upload:
-![](images/Screen Shot 2019-09-02 at 16.22.33.png)
+![](https://github.com/gabriel-lfs/path-transversal/blob/master/images/3.png)
 
 * caso seja chamado o endpoint que lista os arquivos, ele não será enxergado pois está numa pasta acima da visualizada
 
-![](images/Screen Shot 2019-09-02 at 16.14.00.png)
+![](https://github.com/gabriel-lfs/path-transversal/blob/master/images/1.png)
 
 #### caminho:
-![](images/Screen Shot 2019-09-02 at 16.22.52.png)
+![](https://github.com/gabriel-lfs/path-transversal/blob/master/images/4.png)
 
 ## Como resolvemos o problema:
 
 Foi criado um novo projeto em que quando um arquivo é uploadado, um UUID é atribuido a ele independente de seu nome
 
-![](images/Screen Shot 2019-09-02 at 17.12.16.png)
+![](https://github.com/gabriel-lfs/path-transversal/blob/master/images/5.png)
 
-![](images/Screen Shot 2019-09-02 at 17.12.55.png)
+![](https://github.com/gabriel-lfs/path-transversal/blob/master/images/6.png)
 
 logo, não é mais possível de fazer a injeção pois caso tentemos buscar o arquivo utilizando wildcards no path do sistema sempre será gravado um UUID
 
 E caso tentemos acessar um arqivo fora do escopo, no caso, que não esta cadastrado na base, nada será retornado.
 
-![](images/Screen Shot 2019-09-02 at 17.13.28.png)
+![](https://github.com/gabriel-lfs/path-transversal/blob/master/images/7.png)
